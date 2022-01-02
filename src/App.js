@@ -18,7 +18,7 @@ function App() {
       <div className="black-nav">
         <div>개발 블로그</div>
       </div>
-      <button onClick={ cbChangeTitle }>버튼</button>
+      <button onClick={ cbChangeTitle }>수정</button>
       <div className="list">
         <h4 onClick={ () => { changeModal(true); } }>{ title[0] } <span onClick={ () => { changeCount(count+1); } }>👍</span>{ count }</h4>
         <p>22.01.01</p>
@@ -31,6 +31,7 @@ function App() {
         <hr />
       </div>
 
+      <button onClick={ () => { changeModal(!modal); } }>모달창</button>
       {
         modal === true
         ? <Modal />
