@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   let [title, changeTitle] = useState(['글 제목 1', '글 제목 2', '글 제목 3']);
   let [count, changeCount] = useState(0);
+  let [modal, changeModal] = useState(false);
 
   function cbChangeTitle() {
     let newArray = [...title];
@@ -19,7 +20,7 @@ function App() {
       </div>
       <button onClick={ cbChangeTitle }>버튼</button>
       <div className="list">
-        <h4>{ title[0] } <span onClick={ () => { changeCount(count+1); } }>👍</span>{ count }</h4>
+        <h4 onClick={ () => { changeModal(true); } }>{ title[0] } <span onClick={ () => { changeCount(count+1); } }>👍</span>{ count }</h4>
         <p>22.01.01</p>
         <hr />
         <h4>{ title[1] } <span>👍</span>0</h4>
@@ -30,7 +31,11 @@ function App() {
         <hr />
       </div>
 
-      <Modal />
+      {
+        modal === true
+        ? <Modal />
+        : null
+      }
     </div>
   );
 }
