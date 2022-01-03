@@ -19,17 +19,32 @@ function App() {
         <div>개발 블로그</div>
       </div>
       <button onClick={ cbChangeTitle }>수정</button>
-      <div className="list">
+      {/*<div className="list">
         <h4 onClick={ () => { changeModal(true); } }>{ title[0] } <span onClick={ () => { changeCount(count+1); } }>👍</span>{ count }</h4>
         <p>22.01.01</p>
         <hr />
+      </div>
+      <div className="list">
         <h4>{ title[1] } <span>👍</span>0</h4>
         <p>22.01.01</p>
         <hr />
+      </div>
+      <div className="list">
         <h4>{ title[2] } <span>👍</span>0</h4>
         <p>22.01.01</p>
         <hr />
-      </div>
+      </div>*/}
+      {
+        title.map((item) => {
+          return (
+            <div className="list">
+              <h4 onClick={ () => { changeModal(!modal); } }>{ item } <span onClick={ () => { changeCount(count+1); } }>👍</span>{ count }</h4>
+              <p>22.01.01</p>
+              <hr />
+            </div>
+          );
+        })
+      }
 
       <button onClick={ () => { changeModal(!modal); } }>모달창</button>
       {
