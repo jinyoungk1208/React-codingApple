@@ -6,7 +6,7 @@ function App() {
   let [title, setTitle] = useState(["글 제목 1", "글 제목 2", "글 제목 3"]);
   let [count, setCount] = useState(0);
   let [modal, setModal] = useState(false);
-  let [change, setChange] = useState(0);
+  let [clickNum, setClickNum] = useState(0);
   let [inputVal, setInputVal] = useState("");
 
   function modifySetTitle() {
@@ -26,7 +26,7 @@ function App() {
           <div className="list" key={i}>
             <h4
               onClick={() => {
-                setChange(i);
+                setClickNum(i);
               }}
             >
               {item}{" "}
@@ -64,25 +64,45 @@ function App() {
 
       <button
         onClick={() => {
+          setClickNum(0);
+        }}
+      >
+        버튼1
+      </button>
+      <button
+        onClick={() => {
+          setClickNum(1);
+        }}
+      >
+        버튼2
+      </button>
+      <button
+        onClick={() => {
+          setClickNum(2);
+        }}
+      >
+        버튼3
+      </button>
+
+      <button
+        onClick={() => {
           setModal(!modal);
         }}
       >
         모달창
       </button>
-      {modal === true ? <Modal title={title} /> : null}
+      {modal === true ? <Modal clickNum={clickNum} title={title} /> : null}
     </div>
   );
 }
 
 function Modal(props) {
   return (
-    <>
-      <div className="modal">
-        <h2>{props.title[props.i]}</h2>
-        <p>날짜</p>
-        <p>내용</p>
-      </div>
-    </>
+    <div className="modal">
+      <h2>{props.title[props.clickNum]}</h2>
+      <p>날짜</p>
+      <p>내용</p>
+    </div>
   );
 }
 
