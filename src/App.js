@@ -92,6 +92,8 @@ function App() {
         모달창
       </button>
       {modal === true ? <Modal clickNum={clickNum} title={title} /> : null}
+
+      <Profile />
     </div>
   );
 }
@@ -104,6 +106,31 @@ function Modal(props) {
       <p>내용</p>
     </div>
   );
+}
+
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "Kim",
+      age: "30",
+    };
+  }
+
+  changeName() {
+    this.setState({ name: "Lee" });
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>프로필 입니다.</h3>
+        <p>저는 {this.state.name} 입니다.</p>
+        <p>저는 {this.state.age}살 입니다.</p>
+        <button onClick={this.changeName.bind(this)}>Lee</button>
+      </div>
+    );
+  }
 }
 
 export default App;
